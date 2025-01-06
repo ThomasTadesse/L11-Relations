@@ -59,4 +59,14 @@ class User extends Authenticatable
     }
 
     // what can a user have many of? example: posts, comments, etc.
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
