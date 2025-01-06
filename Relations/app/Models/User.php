@@ -46,6 +46,8 @@ class User extends Authenticatable
         ];
     }
 
+    // what can a user have one of? example: profile, experience, etc.
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
@@ -56,4 +58,5 @@ class User extends Authenticatable
         return $this->hasOne(Experience::class);
     }
 
+    // what can a user have many of? example: posts, comments, etc.
 }
