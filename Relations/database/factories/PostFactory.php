@@ -17,7 +17,14 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // here we are using factory to create a user and then use that user's id to create a post
+            'user_id' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
+            
+            // here we are using faker to generate random data
+            'title' => $this->faker->sentence,
+            'content' => $this->faker->paragraph,
         ];
     }
 }
