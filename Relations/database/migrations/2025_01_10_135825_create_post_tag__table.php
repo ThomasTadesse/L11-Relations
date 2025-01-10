@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
+            $table->primary(['post_id', 'tag_id']); //now both columns are primary keys
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('tag_id');
+
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
