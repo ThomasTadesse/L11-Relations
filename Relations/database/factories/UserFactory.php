@@ -29,6 +29,10 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'affiliation_id' => function () {
+                return Affiliation::factory()->create()->id;
+            }
+            // from now any time a user is created, they are automatially assiociated with liberals.
         ];
     }
 
